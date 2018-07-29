@@ -1,26 +1,18 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion compile_sdk_version.toInteger()
 
     defaultConfig {
-        applicationId "com.loong.componentdemo"
         minSdkVersion min_sdk_version.toInteger()
         targetSdkVersion target_sdt_version.toInteger()
-        versionCode 1
-        versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [ moduleName : project.getName() ]
             }
-        }
-    }
-
-    sourceSets {
-        main {
-            manifest.srcFile 'src/main/AndroidManifest.xml'
         }
     }
 
@@ -34,9 +26,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api 'com.alibaba:arouter-api:1.3.1'
+    // arouter-compiler 的注解依赖需要所有使用 ARouter 的 model 都添加依赖
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
-    implementation project(':base')
-    runtimeOnly project(':login')
-    runtimeOnly project(':share')
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+    api project (':componentbase')
 }
