@@ -41,6 +41,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="loginShare"
-        android:text="去分享" />
+        android:text="去分享组件" />
 
 </LinearLayout>

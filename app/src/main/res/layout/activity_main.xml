@@ -11,13 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="login"
-        android:text="跳登录" />
+        android:text="跳登录组件" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="share"
-        android:text="跳分享" />
+        android:text="跳分享组件" />
 
     <Button
         android:layout_width="wrap_content"
