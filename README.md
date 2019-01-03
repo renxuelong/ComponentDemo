@@ -1,7 +1,7 @@
 **Demo 地址 ：https://github.com/renxuelong/ComponentDemo**
 
 ## 演示为先
-![](http://odgw9c93i.bkt.clouddn.com//FmkhuM5aV97FZBUO_w_nEyOTCrFK)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/组件化演示.gif)
 
 # Android 组件化最佳实践
 
@@ -23,7 +23,7 @@
 
 由此来看，[模块] 和 [组件] 间最明显的区别就是模块相对与组件来说粒度更大，一个模块中可能包含多个组件。并且两种方式的本质思想是一样的，都是为了代码重用和业务解耦。在划分的时候，模块化是业务导向，组件化是功能导向。
 
- ![组件化基础架构图](http://odgw9c93i.bkt.clouddn.com//FvXPlaQgAdCgkV2LsGQHxnt4WB1Q)
+ ![组件化基础架构图](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/组件化架构.png)
 
 上面是一个非常基础的组件化架构图，图中从上向下分别为应用层、组件层和基础层。
 
@@ -73,8 +73,8 @@
 
 通过工程的 build.gradle 文件中依赖的 Android Gradle 插件 id 来配置工程的类型，但是我们的组件既可以单独调试又可以被其他模块依赖，所以这里的插件 id 我们不应该写死，而是通过在 module 中添加一个 gradle.properties 配置文件，在配置文件中添加一个布尔类型的变量 isRunAlone，在 build.gradle 中通过 isRunAlone 的值来使用不同的插件从而配置不同的工程类型，在单独调试和集成调试时直接修改 isRunAlone 的值即可。例如，在 Share 分享组件中的配置：
 
-![](http://odgw9c93i.bkt.clouddn.com//Foylv2g4NRA7MTOK5O1GTGVK4SLZ)
-![](http://odgw9c93i.bkt.clouddn.com//FmVWkuY5GhwF5ntf_C0WfpODlGsk)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/Foylv2g4NRA7MTOK5O1GTGVK4SLZ.png)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/FmVWkuY5GhwF5ntf_C0WfpODlGsk.png)
 
 ### 2. 如何动态配置组件的 ApplicationId 和 AndroidManifest 文件
 
@@ -82,7 +82,7 @@
 
 ApplicationId 和 AndroidManifest 文件都是可以在 build.gradle 文件中进行配置的，所以我们同样通过动态配置组件工程类型时定义的 isRunAlone 这个变量的值来动态修改 ApplicationId 和 AndroidManifest。首先我们要新建一个 AndroidManifest.xml 文件，加上原有的 AndroidManifest 文件，在两个文件中就可以分别配置单独调试和集成调试时的不同的配置，如图：
 
-![](http://odgw9c93i.bkt.clouddn.com//FmN2a1F52enSbYvOQcXjRquUrZ4s)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/FmN2a1F52enSbYvOQcXjRquUrZ4s.png)
 
 其中 AndroidManifest 文件中的内容如下：
 
@@ -167,11 +167,11 @@ android {
 
 AndroidStudio 中创建模块比较简单，通过菜单栏中的 File -> New -> New Module 来创建我们的 componentbase 模块。需要注意的是我们在创建组件时需要使用 Phone & Tablet Module ，创建 componentbase 模块时使用 Android Library 来创建，其中的区别是通过 Phone & Tablet Module 创建的默认是 APP 工程，通过 Android Library 创建的默认是 Library 工程，区别我们上面已经说过了。当然如果选错了也不要紧，在 buidl.gradle 中也可以自己来修改配置。如下图：
 
-![](http://odgw9c93i.bkt.clouddn.com//FkgJNpwGNAQLcUOZPNBq9cgYdTqg)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/FkgJNpwGNAQLcUOZPNBq9cgYdTqg.png)
 
 这里 Login 组件中提供获取登录状态和获取登录用户 AccountId 的两个方法，分享组件中的分享操作需要用户登录才可以进行，如果用户未登录则不进行分享操作。我们先看一下 componentbase 模块中的文件结构：
 
-![](http://odgw9c93i.bkt.clouddn.com//FnvQqvYTqleIhONTIox-O8pZRRmZ)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/FnvQqvYTqleIhONTIox-O8pZRRmZ.png)
 
 其中 service 文件夹中定义接口， IAccountService 接口中定义了 Login 组件向外提供的数据传递的接口方法，empty_service 中是 service 中定义的接口的空实现，ServiceFactory 接收组件中实现的接口对象的注册以及向外提供特定组件的接口实现。
 
@@ -750,7 +750,7 @@ public class FragmentActivity extends AppCompatActivity {
 
 这时候组件化的架构图就成了这样：
 
-![](http://odgw9c93i.bkt.clouddn.com//FgQqh07WSS0cSeT0qoBn5sLUgK5t)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/组件化架构2.png)
 
 
 ## 七、组件解耦的目标及代码隔离
@@ -795,11 +795,11 @@ android {
 
 Login 组件中添加 resourcePrefix 配置后，我们会发现 res 中 xml 定义的资源都报红：
 
-![](http://odgw9c93i.bkt.clouddn.com//FjLyHn3wjCMqG381kucDTjNR40A7)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/FjLyHn3wjCMqG381kucDTjNR40A7.png)
 
 而我们修改前缀后则报红消失，显示恢复正常：
 
-![](http://odgw9c93i.bkt.clouddn.com//Fnj_tLG4i627C25GY_S23eU6_gql)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/Fnj_tLG4i627C25GY_S23eU6_gql.png)
 
 到这里解决了组件间代码及资源隔离的问题也就解决了。
 
@@ -810,7 +810,7 @@ Login 组件中添加 resourcePrefix 配置后，我们会发现 res 中 xml 定
 
 **Demo 地址 ：https://github.com/renxuelong/ComponentDemo**
 
-![](http://odgw9c93i.bkt.clouddn.com//FmkhuM5aV97FZBUO_w_nEyOTCrFK)
+![](https://raw.githubusercontent.com/renxuelong/HexoBlog/master/Resource/2018-11/组件化演示.gif)
 
 
 
